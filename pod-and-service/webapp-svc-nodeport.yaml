@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+#    nodePort: 8081   #可以尝试开启这个会有报错提示
+    nodePort: 30001
+  selector:
+    app: webapp
