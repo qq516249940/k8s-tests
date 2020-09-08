@@ -36,3 +36,13 @@ spec:
         ip: string
         hostname: string
 ```
+负载分发策略
+目前kubernetes提供了两种负载分发策略：RoundRobin和SessionAffinity
+
+RoundRobin：轮询模式，即轮询将请求转发到后端的各个Pod上
+
+SessionAffinity：基于客户端IP地址进行会话保持的模式，第一次客户端访问后端某个Pod，之后的请求都转发到这个Pod上
+
+默认是RoundRobin模式
+
+在某些场景中，开发人员希望自己控制负载均衡的策略，不使用Service提供的默认负载，kubernetes通过Headless Service的概念来实现。不给Service设置ClusterIP（无入口IP地址）：
